@@ -15,6 +15,10 @@ class RecognitionMethods:
         self.AUXILIAR_CAMERA = 1
 
     def image_filter_by_folder(self):
+        if not os.path.exists(self.IMAGE_DIR):
+                os.makedirs(self.IMAGE_DIR)
+                print(Fore.GREEN + "created directory: " + self.IMAGE_DIR)
+                
         dir_image_main = os.listdir(self.IMAGE_DIR)
 
         for varFile in dir_image_main:
