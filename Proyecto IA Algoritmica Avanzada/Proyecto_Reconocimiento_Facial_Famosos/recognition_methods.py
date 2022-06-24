@@ -9,10 +9,13 @@ import numpy as np
 from colorama import init, Fore
 
 class RecognitionMethods:
+    
+
     def __init__(self):
         self.IMAGE_DIR = "images/"
         self.NATIVE_CAMERA = 0
         self.AUXILIAR_CAMERA = 1
+        self.IMAGE_FILTER = cv2.COLOR_BGR2HSV  #cv2.COLOR_BGR2GRAY 
 
     def image_filter_by_folder(self):
         if not os.path.exists(self.IMAGE_DIR):
@@ -45,7 +48,7 @@ class RecognitionMethods:
                     print(Fore.RED + "image is None")
                     continue
 
-                image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                image = cv2.cvtColor(image, self.IMAGE_FILTER)
                 # image = cv2.resize(image, (100, 100), interpolation=cv2.INTER_CUBIC)
 
                 cv2.imwrite(output_images_path + "/" +
@@ -112,13 +115,13 @@ class RecognitionMethods:
             labels = {value: key for key, value in labels_bytes.items()}
 
         catcher = cv2.VideoCapture(camera)
-        font = cv2.QT_FONT_DEMIBOLD
+        font = cv2.FONT_HERSHEY_COMPLEX
         color_line = (255, 0, 0)
         stroke = 1
 
         while (True):
             state, frame = catcher.read()
-            gray_scale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            gray_scale = cv2.cvtColor(frame, self.IMAGE_FILTER)
             face_detector = cascade_classifier.detectMultiScale(
                 gray_scale, scaleFactor=1.5, minNeighbors=8)
             for (x, y, width, height) in face_detector:

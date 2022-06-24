@@ -6,7 +6,7 @@ while True:
     print(Fore.YELLOW + "Oprime el numero de la Opción deseada:")
     print("1.- Renderizar dataset.")
     print("2.- Entrenar Modelo.")
-    print("3.- Que el modelo te diga a que famoso de pareces.")
+    print("3.- Que el modelo te diga a que famoso Te pareces.")
     print("4.- Salir.")
     in_key = input()
     
