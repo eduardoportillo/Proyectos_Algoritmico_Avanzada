@@ -15,7 +15,7 @@ class RecognitionMethods:
         self.IMAGE_DIR = "images/"
         self.NATIVE_CAMERA = 0
         self.AUXILIAR_CAMERA = 1
-        self.IMAGE_FILTER = cv2.COLOR_BGR2HSV  #cv2.COLOR_BGR2GRAY 
+        self.IMAGE_FILTER = cv2.COLOR_BGR2GRAY  #cv2.COLOR_BGR2HSV 
 
     def image_filter_by_folder(self):
         if not os.path.exists(self.IMAGE_DIR):
